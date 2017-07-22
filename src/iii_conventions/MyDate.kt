@@ -35,4 +35,13 @@ class DateRange(override val start: MyDate, override val endInclusive: MyDate): 
 
     override fun contains(d: MyDate): Boolean = (d >= start && d <= endInclusive)
 }
+//Add an extension function 'times' to 'TimeInterval', constructing the value of this class.
+//Add an extension function 'plus' to 'MyDate', taking a 'RepeatedTimeInterval' as an argument.
+data class RepeatedTimeInterval(val ti: TimeInterval, val n: Int)
+
+fun TimeInterval.times(i: Int) = RepeatedTimeInterval(this, i)
+
+fun MyDate.plus(rti: RepeatedTimeInterval): MyDate =
+        addTimeIntervals(rti.ti, rti.n)
+
 
