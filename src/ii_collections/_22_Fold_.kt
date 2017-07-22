@@ -14,8 +14,10 @@ fun whatFoldDoes(): Int {
 
 fun Shop.getSetOfProductsOrderedByEveryCustomer(): Set<Product> {
     // Return the set of products ordered by every customer
+    //this.customers.flatMap { c -> c.orderedProducts }.toSet()
     return customers.fold(allOrderedProducts, {
-        orderedByAll, customer ->
-        todoCollectionTask()
+        orderedByAll, customer -> orderedByAll.filter { p -> customer.orders.flatMap { it.products }
+                    .any { pr -> pr == p}}
+            .toSet()
     })
 }
