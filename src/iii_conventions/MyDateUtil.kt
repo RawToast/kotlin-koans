@@ -1,6 +1,6 @@
 package iii_conventions
 
-import iii_conventions.TimeInterval.*
+import iii_conventions.TimeInterval.DAY
 import java.util.*
 
 fun MyDate.nextDay() = addTimeIntervals(DAY, 1)
@@ -15,3 +15,4 @@ fun MyDate.addTimeIntervals(timeInterval: TimeInterval, number: Int): MyDate {
     }
     return MyDate(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DATE))
 }
+
