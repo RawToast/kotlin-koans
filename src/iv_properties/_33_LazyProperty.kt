@@ -3,7 +3,14 @@ package iv_properties
 import util.TODO
 
 class LazyProperty(val initializer: () -> Int) {
-    val lazy: Int = todoTask33()
+    private var buffer: Int? = null
+        get() {
+            if (field == null) field = initializer()
+            return field
+        }
+
+    val lazy: Int
+        get() = buffer!!
 }
 
 fun todoTask33(): Nothing = TODO(
@@ -13,7 +20,7 @@ fun todoTask33(): Nothing = TODO(
         It should be initialized by the invocation of 'initializer()'
         at the moment of the first access.
         You can add as many additional properties as you need.
-        Do not use delegated properties yet!
+        Do not use   yet!
     """,
     references = { LazyProperty({ 42 }).lazy }
 )
